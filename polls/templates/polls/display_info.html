@@ -1,0 +1,36 @@
+<form action="{% url 'polls:test' %}" method="post">
+  {% csrf_token %}
+  <table>
+    {% for row in table %}
+      <tr>
+        {% for cell in row %}
+          {% if forloop.first or forloop.parentloop.first %}
+            <td>{{ cell }}</td>
+          {% else %}
+            <td><input type="checkbox" name="checkbox" value={{ cell }}></td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+  <input type='submit' value='upload'>
+</form>
+
+{% comment %}
+    <tr>
+      <td></td>
+    {% for product in products %}
+      <td>{{ product }} </td>
+    {% endfor %}
+    </tr>
+
+    {% for ticket in tickets %}
+      <tr>
+        <td>{{ ticket }}</td>
+        {% for product in products %}
+          <td><input name="box_name" type="checkbox" value=checked"></td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+
+{% endcomment %}
